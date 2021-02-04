@@ -19,10 +19,10 @@
 
 import gi
 gi.require_version('Gst','1.0')
+gi.require_version('GstVideo', '1.0')
 from gi.repository import GObject, Gst, GstVideo, GstRtspServer
 
 Gst.init(None)
-
 
 mainloop = GObject.MainLoop()
 
@@ -31,7 +31,7 @@ server = GstRtspServer.RTSPServer()
 mounts = server.get_mount_points()
 
 factory = GstRtspServer.RTSPMediaFactory()
-factory.set_launch('( videotestsrc is-live=1 ! x264enc speed-preset=ultrafast tune=zerolatency ! rtph264pay name=pay0 pt=96 )')
+factory.set_launch('( v4l2src device=/dev/video0 ! x264enc speed-preset=ultrafast tune=zerolatency ! h264parse ! rtph264pay name=pay0 pt=96 )')
 
 mounts.add_factory("/test", factory)
 

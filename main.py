@@ -25,8 +25,10 @@ class Output(asyncio.Protocol):
         print(self.transport.get_write_buffer_size())
         print('resume writing')
 
-loop = asyncio.get_event_loop()
+loop = asyncio.get_running_loop()
+
 coro = serial_asyncio.create_serial_connection(loop, Output, '/dev/ttyAMA0', baudrate=2000000)
 loop.run_until_complete(coro)
+
 loop.run_forever()
 loop.close()

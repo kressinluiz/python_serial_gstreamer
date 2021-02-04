@@ -31,7 +31,7 @@ server = GstRtspServer.RTSPServer()
 mounts = server.get_mount_points()
 
 factory = GstRtspServer.RTSPMediaFactory()
-factory.set_launch('( v4l2src device=/dev/video0 ! x264enc speed-preset=ultrafast tune=zerolatency ! h264parse ! rtph264pay name=pay0 pt=96 )')
+factory.set_launch('( v4l2src device=/dev/video0 ! queue ! video/x-h264,height=640,width=480,framerate=30/1 ! x264enc speed-preset=ultrafast tune=zerolatency ! h264parse ! rtph264pay name=pay0 pt=96 )')
 
 mounts.add_factory("/test", factory)
 

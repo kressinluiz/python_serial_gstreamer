@@ -26,7 +26,7 @@ import serial
 
 # on which port should the tests be performed:
 PORT = 'loop://'
-BAUDRATE = 115200
+BAUDRATE = 2000000
 #~ BAUDRATE=9600
 
 if sys.version_info >= (3, 0):
@@ -43,6 +43,7 @@ class TestHighLoad(unittest.TestCase):
 
     def setUp(self):
         self.s = serial.serial_for_url(PORT, BAUDRATE, timeout=10)
+        print(self.s.baudrate)
 
     def tearDown(self):
         self.s.close()

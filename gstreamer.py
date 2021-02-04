@@ -31,7 +31,7 @@ server = GstRtspServer.RTSPServer()
 mounts = server.get_mount_points()
 
 factory = GstRtspServer.RTSPMediaFactory()
-factory.set_launch('( v4l2src device=/dev/video0 do-timestamp=true ! videorate ! video/x-raw,width=1280,height=720,framerate=5/1 ! omxh264enc target-bitrate=1000000 control-rate=variable ! video/x-h264,profile=high ! h264parse ! rtph264pay config-interval=1)')
+factory.set_launch('( v4l2src device=/dev/video0 do-timestamp=true ! videorate ! video/x-raw,width=1280,height=720,framerate=5/1 ! omxh264enc target-bitrate=1000000 control-rate=variable ! video/x-h264,profile=high ! h264parse ! rtph264pay )')
 
 mounts.add_factory("/test", factory)
 

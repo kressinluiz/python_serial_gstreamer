@@ -1,6 +1,7 @@
 import asyncio
 import serial_asyncio
 
+
 class Output(asyncio.Protocol):
     def connection_made(self, transport):
         self.transport = transport
@@ -10,9 +11,10 @@ class Output(asyncio.Protocol):
 
     def data_received(self, data):
         print('data received', repr(data))
-        if b'\n' in data:
-            self.transport.write(b'Hello, World!\n')
-#            self.transport.close()
+
+    #        if b'\n' in data:
+    #            self.transport.write(b'Hello, World!\n')
+    #            self.transport.close()
 
     def connection_lost(self, exc):
         print('port closed')
@@ -25,6 +27,7 @@ class Output(asyncio.Protocol):
     def resume_writing(self):
         print(self.transport.get_write_buffer_size())
         print('resume writing')
+
 
 # https://docs.python.org/3/library/asyncio-eventloop.html
 # asyncio.get_event_loop() :

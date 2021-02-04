@@ -10,7 +10,7 @@ class Output(asyncio.Protocol):
         transport.write(b'Hello, World!\n')  # Write serial data via transport
 
     def data_received(self, data):
-        print('data received', data)
+        print('data received', data.decode('UTF-8'))
 
     #        if b'\n' in data:
     #            self.transport.write(b'Hello, World!\n')

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #credits : https://gstreamer.freedesktop.org/documentation/tutorials/basic/hello-world.html?gi-language=python
-
+import logging
 import sys
 import gi
 
@@ -9,6 +9,9 @@ gi.require_version('GObject', '2.0')
 gi.require_version('Gst', '1.0')
 
 from gi.repository import Gst, GObject, GLib
+
+logging.basicConfig(level=logging.DEBUG, format="[%(name)s] [%(levelname)8s] - %(message)s")
+logger = logging.getLogger(__name__)
 
 pipeline = None
 bus = None

@@ -20,7 +20,7 @@ Gst.init(sys.argv[1:])
 # build the pipeline
 # Gst.parse_launch:
 pipeline = Gst.parse_launch(
-    "v4l2src device=/dev/video0 ! video/x-raw,width=640,height=480,framerate=30/1 ! videoscale ! videoconvert ! x264enc tune=zerolatency bitrate=500000 speed-preset=superfast ! h264parse !rtph264pay ! udpsink host=192.168.1.23 port=5000"
+    "v4l2src device=/dev/video0 ! video/x-raw,width=640,height=480,framerate=30/1 ! videoscale ! videoconvert ! x264enc tune=zerolatency bitrate=500 speed-preset=superfast ! h264parse !rtph264pay ! udpsink host=192.168.1.23 port=5000"
 )
 
 # start playing

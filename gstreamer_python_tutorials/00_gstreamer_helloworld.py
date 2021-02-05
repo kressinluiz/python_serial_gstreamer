@@ -10,8 +10,7 @@ gi.require_version('Gst', '1.0')
 
 from gi.repository import Gst, GObject, GLib
 
-logging.basicConfig(level=logging.DEBUG, format="[%(name)s] [%(levelname)8s] - %(message)s")
-logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO, format="[%(name)s] [%(levelname)8s] - %(message)s")
 
 pipeline = None
 bus = None
